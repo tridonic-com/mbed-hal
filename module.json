@@ -27,7 +27,7 @@
       "mbed-hal-freescale": "~0.6.0"
     },
     "st": {
-      "mbed-hal-st": "~0.7.0"
+      "mbed-hal-st": "tridonic-com/mbed-hal-st#tridonic"
     },
     "nordic": {
       "mbed-hal-nordic": "~0.0.1"
