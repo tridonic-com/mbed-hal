@@ -172,6 +172,8 @@ void i2c_slave_address(i2c_t *obj, int idx, uint32_t address, uint32_t mask);
 #endif
 /**@}*/
 
+int i2c_enable_slave_it(i2c_t *obj);
+
 /******* Non-Blocking mode: DMA */
 int i2c_master_transmit_DMA(i2c_t *obj, int address, const char *data, int length, int stop);
 int i2c_master_receive_DMA(i2c_t *obj, int address, char *data, int length, int stop);
