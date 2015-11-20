@@ -21,6 +21,9 @@
 
 #if DEVICE_I2C
 
+
+typedef void (*event_cb_t)(I2C_HandleTypeDef *hi2c);
+
 /**
  * @defgroup I2CEvents I2C Events Macros
  *
@@ -172,14 +175,16 @@ void i2c_slave_address(i2c_t *obj, int idx, uint32_t address, uint32_t mask);
 #endif
 /**@}*/
 
-int i2c_enable_slave_it(i2c_t *obj);
+void i2c_set_own_address(i2c_t *obj, uint32_t address);
 
-/******* Non-Blocking mode: DMA */
-int i2c_master_transmit_DMA(i2c_t *obj, int address, const char *data, int length, int stop);
-int i2c_master_receive_DMA(i2c_t *obj, int address, char *data, int length, int stop);
-int i2c_slave_transmit_DMA(i2c_t *obj, const char *data, int length);
-int i2c_slave_receive_DMA(i2c_t *obj, char *data, int length);
-
+#ifdef DEVICE_I2C_DMA
+void i2c_register_event_cb(event_cb_t cb_s_rx, event_cb_t cb_s_tx, event_cb_t cb_m_rx, event_cb_t cb_m_tx, event_cb_t cb_e_ad, event_cb_t cb_e_er);
+int i2c_enable_i2c_it(i2c_t *obj);
+int i2c_master_transmit_DMA(i2c_t *obj, int address, const unsigned char *data, int length, int stop);
+int i2c_master_receive_DMA(i2c_t *obj, int address, unsigned char *data, int length, int stop);
+int i2c_slave_transmit_DMA(i2c_t *obj, const unsigned char *data, int length);
+int i2c_slave_receive_DMA(i2c_t *obj, unsigned char *data, int length);
+#endif
 
 
 #if DEVICE_I2C_ASYNCH
