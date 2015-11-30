@@ -27,11 +27,9 @@ extern "C" {
 #endif
 
 /**
- * \defgroup LpTicker Low Power Ticker Functions
+ * \defgroup hal_LpTicker Low Power Ticker Functions
  * @{
  */
-
-/* HAL lp ticker */
 
 /** Initialize the low power ticker
  *
@@ -40,7 +38,7 @@ void lp_ticker_init(void);
 
 /** Read the current counter
  *
- * @return The current timer's counter value in microseconds
+ * @return The current timer's counter value
  */
 uint32_t lp_ticker_read(void);
 
@@ -53,13 +51,13 @@ void lp_ticker_set_interrupt(uint32_t now, uint32_t time);
 
 /** Get the overflows counter
  *
- * @return The counter of overflows
+ * @return The timer's overflow counter
  */
 uint32_t lp_ticker_get_overflows_counter(void);
 
 /** Get compare match register
  *
- * @return The time when is the next lp ticker interrupt scheduled
+ * @return The next lp ticker interrupt scheduled time
  */
 uint32_t lp_ticker_get_compare_match(void);
 

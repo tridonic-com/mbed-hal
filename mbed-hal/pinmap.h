@@ -18,14 +18,32 @@
 #define MBED_PINMAP_H
 
 #include "PinNames.h"
-#include "pinmap_common.h"
+#include "mbed-drivers/pinmap_common.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+/**
+ * \defgroup hal_pin Pin hal functions
+ * @{
+ */
+
+/** Set the pin function
+ *
+ * @param pin      The pin name
+ * @param function The function value
+ */
 void pin_function(PinName pin, int function);
+
+/** Set pin mode
+ *
+ * @param pin  The pin name
+ * @param mode The pin mode to be set
+ */
 void pin_mode(PinName pin, PinMode mode);
+
+/**@}*/
 
 #ifdef __cplusplus
 }
