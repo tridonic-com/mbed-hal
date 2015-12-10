@@ -24,19 +24,28 @@
 extern "C" {
 #endif
 
+/** Sleep HAL structure. sleep_s is declared in the target's HAL
+ */
 typedef struct sleep_s sleep_t;
 
-/** Enter a sleep mode.
+/**
+ * \defgroup hal_sleep Sleep HAL functions
+ * @{
+ */
+
+/** Enter the sleep mode
  *
- * @param obj The sleep object which stores required data to restore from sleep
+ * @param obj The sleep object that stores required data to restore from sleep
  */
 void mbed_enter_sleep(sleep_t *obj);
 
-/** Restore the mcu from the entered sleep mode.
+/** Restore the MCU from the specified sleep mode
  *
- * @param obj The sleep object which stores required data to restore from sleep
+ * @param obj The sleep object that stores required data to restore from sleep
  */
 void mbed_exit_sleep(sleep_t *obj);
+
+/**@}*/
 
 #ifdef __cplusplus
 }
