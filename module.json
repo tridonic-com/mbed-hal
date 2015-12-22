@@ -28,7 +28,7 @@
       "mbed-hal-freescale": "^1.0.0"
     },
     "st": {
-      "mbed-hal-st": "tridonic-com/mbed-hal-st#tridonic"
+      "mbed-hal-st": "ivan-adzic-tridonic-com/mbed-hal-st#i2c-dma"
     },
     "nordic": {
       "mbed-hal-nordic": "^2.0.0"
