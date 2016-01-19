@@ -35,7 +35,6 @@ typedef void (*event_cb_t)(I2C_HandleTypeDef *hi2c);
 #define I2C_EVENT_TRANSFER_EARLY_NACK (1 << 4)
 #define I2C_EVENT_ALL                 (I2C_EVENT_ERROR |  I2C_EVENT_TRANSFER_COMPLETE | I2C_EVENT_ERROR_NO_SLAVE | I2C_EVENT_TRANSFER_EARLY_NACK)
 
-#define I2C_DATA_LENGTH_MAX 200
 /**@}*/
 
 #if DEVICE_I2C_ASYNCH
