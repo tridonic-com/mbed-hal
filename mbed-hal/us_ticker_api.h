@@ -24,7 +24,7 @@ extern "C" {
 #endif
 
 /**
- * \defgroup UsTicker Microseconds Ticker Functions
+ * \defgroup hal_UsTicker Microseconds Ticker Functions
  * @{
  */
 
@@ -53,10 +53,16 @@ void us_ticker_init(void);
  */
 uint32_t us_ticker_read(void);
 
+/** The wrapper to handle ticker overflows: passes ticker's data
+ *
+ */
+void us_ticker_overflow_handler(void);
+
 /** Set interrupt for specified timestamp
  *
  * @param timestamp The time in microseconds to be set
  */
+
 void us_ticker_set_interrupt(timestamp_t timestamp);
 
 /** Disable us ticker interrupt
