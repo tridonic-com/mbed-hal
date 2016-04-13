@@ -19,6 +19,13 @@
 #include <stdint.h>
 #include "device.h"
 
+#ifdef TARGET_LIKE_STM32F0
+	#define TICKER_TIME_MASK	0xFFFF			// mask for 16bit timer
+#else
+	#define TICKER_TIME_MASK	0x7FFFFFFF		// mask for 32bit timer
+#endif
+#define TICKER_TIME_OVERFLOW	(TICKER_TIME_MASK+1)
+
 typedef uint32_t timestamp_t;
 
 /** Ticker's event structure
@@ -91,7 +98,16 @@ void ticker_remove_event(const ticker_data_t *const data, ticker_event_t *obj);
  * @param timestamp The event's timestamp
  * @param id        The event object
  */
+
 void ticker_insert_event(const ticker_data_t *const data, ticker_event_t *obj, timestamp_t timestamp, uint32_t id);
+
+/** decrement upper part of timer values (software handled timeout extension)
+ *  called at timer overflow
+ *
+ * @param data The ticker's data
+ */
+void ticker_decrementUpper(const ticker_data_t *const data);
+
 
 /** Read the current ticker's timestamp
  *
