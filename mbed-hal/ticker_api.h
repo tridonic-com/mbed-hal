@@ -16,7 +16,15 @@
 #ifndef MBED_TICKER_API_H
 #define MBED_TICKER_API_H
 
+#include <stdint.h>
 #include "device.h"
+
+#ifdef TARGET_LIKE_STM32F0
+	#define TICKER_TIME_MASK	0xFFFF			// mask for 16bit timer
+#else
+	#define TICKER_TIME_MASK	0x7FFFFFFF		// mask for 32bit timer
+#endif
+#define TICKER_TIME_OVERFLOW	(TICKER_TIME_MASK+1)
 
 typedef uint32_t timestamp_t;
 
@@ -40,32 +48,37 @@ typedef struct {
     void (*set_interrupt)(timestamp_t timestamp); /**< Set interrupt function */
 } ticker_interface_t;
 
-/** Tickers events queue structure
+/** Ticker's event queue structure
  */
 typedef struct {
     ticker_event_handler event_handler; /**< Event handler */
     ticker_event_t *head;               /**< A pointer to head */
 } ticker_event_queue_t;
 
-/** Tickers data structure
+/** Ticker's data structure
  */
 typedef struct {
     const ticker_interface_t *interface; /**< Ticker's interface */
-    ticker_event_queue_t *queue;         /**< Ticker's events queue */
+    ticker_event_queue_t *queue;         /**< Ticker's event queue */
 } ticker_data_t;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/** Initialize a ticker and sets the event handler
+/**
+ * \defgroup hal_ticker Ticker HAL functions
+ * @{
+ */
+
+/** Initialize a ticker and set the event handler
  *
  * @param data    The ticker's data
  * @param handler A handler to be set
  */
 void ticker_set_handler(const ticker_data_t *const data, ticker_event_handler handler);
 
-/** Irq handler which goes through the events to trigger events in the past.
+/** IRQ handler that goes through the events to trigger overdue events.
  *
  * @param data    The ticker's data
  */
@@ -74,18 +87,27 @@ void ticker_irq_handler(const ticker_data_t *const data);
 /** Remove an event from the queue
  *
  * @param data The ticker's data
- * @param obj  The event's queue to be removed
+ * @param obj  The event object to be removed from the queue
  */
 void ticker_remove_event(const ticker_data_t *const data, ticker_event_t *obj);
 
-/** Insert an event from the queue
+/** Insert an event to the queue
  *
  * @param data      The ticker's data
- * @param obj       The event's queue to be removed
+ * @param obj       The event object to be inserted to the queue
  * @param timestamp The event's timestamp
  * @param id        The event object
  */
+
 void ticker_insert_event(const ticker_data_t *const data, ticker_event_t *obj, timestamp_t timestamp, uint32_t id);
+
+/** decrement upper part of timer values (software handled timeout extension)
+ *  called at timer overflow
+ *
+ * @param data The ticker's data
+ */
+void ticker_decrementUpper(const ticker_data_t *const data);
+
 
 /** Read the current ticker's timestamp
  *
@@ -93,6 +115,8 @@ void ticker_insert_event(const ticker_data_t *const data, ticker_event_t *obj, t
  * @return The current timestamp
  */
 timestamp_t ticker_read(const ticker_data_t *const data);
+
+/**@}*/
 
 #ifdef __cplusplus
 }
