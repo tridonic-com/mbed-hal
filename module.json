@@ -1,6 +1,6 @@
 {
   "name": "mbed-hal",
-  "version": "1.2.0-tri-0.0.5",
+  "version": "1.2.0-tri-0.1.6",
   "description": "mbed low-level Hardware Abstraction Layer",
   "keywords": [
     "mbed",
@@ -28,7 +28,7 @@
       "mbed-hal-freescale": "^1.0.0"
     },
     "st": {
-      "mbed-hal-st": "tridonic-com/mbed-hal-st#1.0.0-tri-0.0.5"
+      "mbed-hal-st": "tridonic-com/mbed-hal-st#b1.0.0-tri-0.1.6"
     },
     "nordic": {
       "mbed-hal-nordic": "^2.0.0"
