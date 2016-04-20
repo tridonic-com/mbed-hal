@@ -98,7 +98,6 @@ void ticker_remove_event(const ticker_data_t *const data, ticker_event_t *obj);
  * @param timestamp The event's timestamp
  * @param id        The event object
  */
-
 void ticker_insert_event(const ticker_data_t *const data, ticker_event_t *obj, timestamp_t timestamp, uint32_t id);
 
 /** decrement upper part of timer values (software handled timeout extension)

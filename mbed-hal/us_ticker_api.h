@@ -62,7 +62,6 @@ void us_ticker_overflow_handler(void);
  *
  * @param timestamp The time in microseconds to be set
  */
-
 void us_ticker_set_interrupt(timestamp_t timestamp);
 
 /** Disable us ticker interrupt
