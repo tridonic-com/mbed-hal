@@ -48,7 +48,10 @@ typedef struct {
 #else
 /** Non-asynch SPI HAL structure
  */
-typedef struct spi_s spi_t;
+//typedef struct spi_s spi_t;
+typedef struct {
+    struct spi_s spi;
+}spi_t;
 
 #endif
 
