@@ -54,7 +54,10 @@ typedef struct {
 #else
 /** Non-asynch I2C HAL structure
  */
-typedef struct i2c_s i2c_t;
+//typedef struct spi_s spi_t;
+typedef struct {
+    struct spi_s spi;
+}spi_t;
 
 #endif
 
