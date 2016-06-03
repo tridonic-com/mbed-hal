@@ -81,6 +81,14 @@ extern "C" {
  */
 void i2c_init(i2c_t *obj, PinName sda, PinName scl);
 
+/** DeInitialize the I2C peripheral. It sets the default parameters for I2C
+ *  peripheral, and configures its specifieds pins.
+ *
+ *  @param obj  The I2C object
+ */
+
+void i2c_deInit(i2c_t *obj);
+
 /** Configure the I2C frequency
  *
  *  @param obj The I2C object
