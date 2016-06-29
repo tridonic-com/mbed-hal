@@ -20,6 +20,7 @@
 /* Public macro -------------------------------------------------------------*/
 /* Exported variables -------------------------------------------------------*/
 /* Public function prototypes -----------------------------------------------*/
+int Init();
 int Reset();
 int CalcSingle(uint8_t* pui32StartAddress, uint32_t ui32DataSize, uint32_t* pui32CRC);
 int CalcAccumulate(uint8_t* pui32StartAddress, uint32_t ui32DataSize, uint32_t* pui32CRC);
