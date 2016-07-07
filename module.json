@@ -28,7 +28,7 @@
       "mbed-hal-freescale": "^1.0.0"
     },
     "st": {
-      "mbed-hal-st": "tridonic-com/mbed-hal-st#b1.0.0-tri-0.5.0"
+      "mbed-hal-st": "martin-tomasini-tridonic-com/mbed-hal-st#Internal_Flash_Driver_Fix_and_Adding_Core_Driver"
     },
     "nordic": {
       "mbed-hal-nordic": "^2.0.0"
