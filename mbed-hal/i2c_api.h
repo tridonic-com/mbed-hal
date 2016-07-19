@@ -198,6 +198,8 @@ void i2c_slave_address(i2c_t *obj, int idx, uint32_t address, uint32_t mask);
 /**@}*/
 
 void i2c_set_own_address(i2c_t *obj, uint32_t address);
+void i2c_ack_own_address(i2c_t *obj);  //Call in order to enable own address acknowledge
+void i2c_nack_own_address(i2c_t *obj); //Call in order to disable own address acknowledge
 
 #ifdef DEVICE_I2C_DMA
 void i2c_register_event_cb(event_cb_t cb_s_rx, event_cb_t cb_s_tx, event_cb_t cb_m_rx, event_cb_t cb_m_tx, event_cb_t cb_e_ad, event_cb_t cb_e_er);
