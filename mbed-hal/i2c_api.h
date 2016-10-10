@@ -27,6 +27,7 @@
 
 
 typedef void (*event_cb_t)(I2C_HandleTypeDef *hi2c);
+typedef void (*event_cb_t2)(I2C_HandleTypeDef *hi2c, uint8_t jb);
 
 /**
  * @defgroup hal_I2CEvents I2C Events Macros
@@ -200,7 +201,7 @@ void i2c_slave_address(i2c_t *obj, int idx, uint32_t address, uint32_t mask);
 void i2c_set_own_address(i2c_t *obj, uint32_t address);
 
 #ifdef DEVICE_I2C_DMA
-void i2c_register_event_cb(event_cb_t cb_s_rx, event_cb_t cb_s_tx, event_cb_t cb_m_rx, event_cb_t cb_m_tx, event_cb_t cb_e_ad, event_cb_t cb_e_er);
+void i2c_register_event_cb(event_cb_t2 cb_s_rx, event_cb_t cb_s_tx, event_cb_t cb_m_rx, event_cb_t cb_m_tx, event_cb_t cb_e_ad, event_cb_t cb_e_er);
 int i2c_enable_i2c_it(i2c_t *obj);
 int i2c_master_transmit_DMA(i2c_t *obj, int address, const unsigned char *data, int length, char stop);
 int i2c_master_receive_DMA(i2c_t *obj, int address, unsigned char *data, int length, char stop);
